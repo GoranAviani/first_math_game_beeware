@@ -27,7 +27,7 @@ class Firstmathgame(toga.App):
 
         button = toga.Button(
             'Submit answer!!',
-            on_press=self.check_if_correct,
+            on_press=self.tasks(),
             style=Pack(padding=5)
         )
 
@@ -38,17 +38,22 @@ class Firstmathgame(toga.App):
         self.main_window.content = main_box
         self.main_window.show()
 
+    def tasks(self):
         questions = {'1+1=': '2', '1+2=': '3', '1+3=': '4', '1+__=2': '1'}
         for self.task, self.result in questions.items():
             self.task_display.value = self.task
+            result1 = self.check_if_correct()
+            print(result1)
 
 
-    def check_if_correct(self, widget):
+
+    def check_if_correct(self):
         self.user_input.text = "Hello {}!".format(self.user_input.value)
-        if self.user_input == self.result:
+        if self.user_input.value == self.result:
             print('Bravo!')
         else:
             print(":(")
+        return 'a'
 
 def main():
     return Firstmathgame()
