@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Briefcase-Version: 0.3.3
+Name: firstmathgame
+Formal-Name: First math game
+App-ID: com.example.firstmathgame
+Version: 0.0.1
+Home-page: https://example.com/firstmathgame
+Author: Goran Aviani
+Author-email: goran.aviani@gmail.com
+Summary: My first application
