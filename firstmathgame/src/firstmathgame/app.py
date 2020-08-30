@@ -12,35 +12,43 @@ class Firstmathgame(toga.App):
     def startup(self):
         main_box = toga.Box(style=Pack(direction=COLUMN))
 
-        math_label = toga.Label(
-            'Task: ',
-            style=Pack(padding=(0, 10), font_size=20)
+        self.math_label = toga.Label(
+            'First math game:',
+            style=Pack(padding=(0, 10))
         )
+        self.task_display = toga.TextInput(style=Pack(flex=1))
         self.user_input = toga.TextInput(style=Pack(flex=1))
 
 
-
-        name_box = toga.Box(style=Pack(direction=ROW, padding=5))
-        name_box.add(math_label)
-        name_box.add(self.user_input)
+        math_box = toga.Box(style=Pack(direction=COLUMN, padding=5))
+        math_box.add(self.math_label)
+        math_box.add(self.task_display)
+        math_box.add(self.user_input)
 
         button = toga.Button(
-            'Say Hello!',
-            on_press=self.say_hello,
+            'Submit answer!!',
+            on_press=self.check_if_correct,
             style=Pack(padding=5)
         )
 
-        main_box.add(name_box)
+        main_box.add(math_box)
         main_box.add(button)
 
         self.main_window = toga.MainWindow(title=self.formal_name)
         self.main_window.content = main_box
         self.main_window.show()
 
+        questions = {'1+1=': '2', '1+2=': '3', '1+3=': '4', '1+__=2': '1'}
+        for self.task, self.result in questions.items():
+            self.task_display.value = self.task
 
-    def say_hello(self, widget):
-        print("Hello", self.user_input.value)
-        self.user_input.text = "Hello {}!".format(self.name_input.value)
+
+    def check_if_correct(self, widget):
+        self.user_input.text = "Hello {}!".format(self.user_input.value)
+        if self.user_input == self.result:
+            print('Bravo!')
+        else:
+            print(":(")
 
 def main():
     return Firstmathgame()
