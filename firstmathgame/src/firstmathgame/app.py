@@ -40,6 +40,9 @@ class Firstmathgame(toga.App):
 
     def tasks(self):
         questions = {'1+1=': '2', '1+2=': '3', '1+3=': '4', '1+__=2': '1'}
+        questions1 = [{'task': '1+1=', 'result': '2'}, {'task': '1+2=', 'result': '3'}, {'task': '1+3=', 'result': '4'},
+                      {'task': '1+__=2', 'result': '1'}]
+
         for self.task, self.result in questions.items():
             self.task_display.value = self.task
             result1 = self.check_if_correct()
