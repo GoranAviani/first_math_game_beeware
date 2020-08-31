@@ -11,11 +11,11 @@ class Firstmathgame(toga.App):
     def __init__(self):
         super().__init__()
         self.counter = 0
-        self.task = ''
-        self.result = ''
         self.questions1 = [{'task': '1+1=', 'result': '2'}, {'task': '1+2=', 'result': '3'},
                            {'task': '1+3=', 'result': '4'},
                            {'task': '1+__=2', 'result': '1'}]
+        self.task = self.questions1[self.counter]['task']
+        self.result = self.questions1[self.counter]['result']
 
     def startup(self):
         main_box = toga.Box(style=Pack(direction=COLUMN))
@@ -42,12 +42,12 @@ class Firstmathgame(toga.App):
         main_box.add(math_box)
         main_box.add(button)
 
-
         self.main_window = toga.MainWindow(title=self.formal_name)
         self.main_window.content = main_box
         self.main_window.show()
 
     def change_index(self):
+        print('change index!!!!!!!!!!!1')
         self.check_if_correct()
         self.counter += 1
         if self.counter > len(self.questions1):
@@ -55,6 +55,7 @@ class Firstmathgame(toga.App):
         self.tasks()
 
     def tasks(self):
+        print('task!!!!!')
         #questions = {'1+1=': '2', '1+2=': '3', '1+3=': '4', '1+__=2': '1'}
 
         self.task = self.questions1[self.counter]['task']
@@ -62,6 +63,8 @@ class Firstmathgame(toga.App):
         self.task_display.value = self.task
 
     def check_if_correct(self):
+        print('check!!!!!!11')
+        print(self.user_input.value)
         if self.user_input.value == self.result:
             print('Bravo!')
         else:
